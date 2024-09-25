@@ -6,11 +6,15 @@ LDFLAGS := -lpthread
 
 #TODO: Add other executables
 EXECUTABLES = \
+	simple-client \
 	sequential-server
 
 all: $(EXECUTABLES)
 
 sequential-server: utils.cpp sequential-server.cpp
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
+
+simple-client: simple-client.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 .PHONY: clean format

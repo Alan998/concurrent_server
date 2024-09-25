@@ -5,6 +5,8 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 
+constexpr int BUFF_SIZE{ 1024 };
+
 // Dies (exits with a failure status) after printing the current perror status
 // prefixed with msg.
 void

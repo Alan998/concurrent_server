@@ -23,8 +23,8 @@ serve_connection(const int sockfd)
 
 	Process_State state{ Process_State::WAIT_FOR_MSG };
 	while (true) {
-		std::array<uint8_t, 1024> buf;
-		const int				  len = recv(sockfd, buf.data(), buf.size(), 0);
+		std::array<uint8_t, BUFF_SIZE> buf;
+		const int len = recv(sockfd, buf.data(), buf.size(), 0);
 		if (len < 0) {
 			perror_die("recv error");
 		} else if (len == 0) {
