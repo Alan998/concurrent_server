@@ -7,14 +7,18 @@ LDFLAGS := -lpthread
 #TODO: Add other executables
 EXECUTABLES = \
 	simple-client \
-	sequential-server
+	sequential-server \
+	threaded-server
 
 all: $(EXECUTABLES)
+
+simple-client: simple-client.cpp
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 sequential-server: utils.cpp sequential-server.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
-simple-client: simple-client.cpp
+threaded-server: threaded-server.cpp utils.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 .PHONY: clean format
